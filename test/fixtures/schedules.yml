@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_id: 
+  mo_open: 2015-10-10 22:57:24
+  mo_close: 2015-10-10 22:57:24
+  tu_open: 2015-10-10 22:57:24
+  tu_close: 2015-10-10 22:57:24
+  we_open: 2015-10-10 22:57:24
+  we_close: 2015-10-10 22:57:24
+  th_open: 2015-10-10 22:57:24
+  th_close: 2015-10-10 22:57:24
+  fr_open: 2015-10-10 22:57:24
+  fr_close: 2015-10-10 22:57:24
+  sa_open: 2015-10-10 22:57:24
+  sa_close_time: MyString
+  su_open: 2015-10-10 22:57:24
+  su_close: 2015-10-10 22:57:24
+
+two:
+  business_id: 
+  mo_open: 2015-10-10 22:57:24
+  mo_close: 2015-10-10 22:57:24
+  tu_open: 2015-10-10 22:57:24
+  tu_close: 2015-10-10 22:57:24
+  we_open: 2015-10-10 22:57:24
+  we_close: 2015-10-10 22:57:24
+  th_open: 2015-10-10 22:57:24
+  th_close: 2015-10-10 22:57:24
+  fr_open: 2015-10-10 22:57:24
+  fr_close: 2015-10-10 22:57:24
+  sa_open: 2015-10-10 22:57:24
+  sa_close_time: MyString
+  su_open: 2015-10-10 22:57:24
+  su_close: 2015-10-10 22:57:24
