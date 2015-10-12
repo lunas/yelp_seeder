@@ -1,7 +1,7 @@
 class CreateSchedules < ActiveRecord::Migration
   def change
     create_table :schedules do |t|
-      t.references :business, index: true, foreign_key: true
+      t.string :business_id, index: true, foreign_key: true
       t.time :mo_open
       t.time :mo_close
       t.time :tu_open

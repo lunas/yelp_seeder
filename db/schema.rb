@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   add_index "businesses", ["business_id"], name: "index_businesses_on_business_id", unique: true, using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.integer  "business_id"
+    t.string   "business_id"
     t.string   "name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   add_index "categories", ["business_id"], name: "index_categories_on_business_id", using: :btree
 
   create_table "checkins", force: :cascade do |t|
-    t.integer  "business_id"
+    t.string   "business_id"
     t.json     "info",        default: {}
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   add_index "checkins", ["business_id"], name: "index_checkins_on_business_id", using: :btree
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "user_id"
+    t.string   "user_id"
     t.string   "friend_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20151010210503) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "review_id",                null: false
-    t.integer  "user_id"
-    t.integer  "business_id"
+    t.string   "user_id"
+    t.string   "business_id"
     t.text     "text"
     t.date     "date"
     t.integer  "stars"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
-    t.integer  "business_id"
+    t.string   "business_id"
     t.time     "mo_open"
     t.time     "mo_close"
     t.time     "tu_open"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   add_index "schedules", ["business_id"], name: "index_schedules_on_business_id", using: :btree
 
   create_table "tips", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "business_id"
+    t.string   "user_id"
+    t.string   "business_id"
     t.integer  "likes"
     t.date     "date"
     t.text     "text"
@@ -130,12 +130,4 @@ ActiveRecord::Schema.define(version: 20151010210503) do
 
   add_index "users", ["user_id"], name: "index_users_on_user_id", unique: true, using: :btree
 
-  add_foreign_key "categories", "businesses"
-  add_foreign_key "checkins", "businesses"
-  add_foreign_key "friendships", "users"
-  add_foreign_key "reviews", "businesses"
-  add_foreign_key "reviews", "users"
-  add_foreign_key "schedules", "businesses"
-  add_foreign_key "tips", "businesses"
-  add_foreign_key "tips", "users"
 end
