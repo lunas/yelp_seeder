@@ -11,7 +11,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.decimal :stars
       t.integer :review_counts
       t.string :neighborhoods, array: true, default: []
-      t.json   :attributes, default: {}
+      t.json   :attribs, default: {}
       t.boolean :open
 
       t.timestamps null: false

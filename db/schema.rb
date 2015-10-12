@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
     t.decimal  "stars"
     t.integer  "review_counts"
     t.string   "neighborhoods", default: [],              array: true
-    t.json     "attributes",    default: {}
+    t.json     "attribs",       default: {}
     t.boolean  "open"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

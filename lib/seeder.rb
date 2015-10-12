@@ -32,7 +32,30 @@ class Seeder
 
 
   def seed_businesses
+    line_by_line(:business) do |line|
+      Business.build_from_json line
+    end
+  end
 
+
+  def seed_reviews
+    line_by_line(:review) do |line|
+      Review.build_from_json line
+    end
+  end
+
+
+  def seed_checkins
+    line_by_line(:checkin) do |line|
+      Checkin.build_from_json line
+    end
+  end
+
+
+  def seed_tips
+    line_by_line(:tip) do |line|
+      Tip.build_from_json line
+    end
   end
 
 
