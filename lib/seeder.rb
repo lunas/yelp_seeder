@@ -1,3 +1,9 @@
+##
+# Create Production-DB yelp_production, then run
+#     RAILS_ENV=production rake db:migrate
+# Then seed the data from the json files with
+#     RAILS_ENV=production rails r "require './lib/seeder.rb'; s = Seeder.new; s.seed"
+#
 class Seeder
 
   DATA_PATH = "#{Rails.root}/data/"
@@ -18,6 +24,7 @@ class Seeder
     seed_reviews
     seed_checkins
     seed_tips
+    print_counters
   end
 
 
@@ -67,6 +74,7 @@ class Seeder
     File.foreach(filename) do |line|
       yield line
       @counters[obj_type] += 1
+      putc '.' if @counters[obj_type] % 1000 == 0
       break if test? and max_reached?(obj_type)
     end
   end
@@ -79,6 +87,12 @@ class Seeder
 
   def max_reached?(obj_type)
     @counters[obj_type] > TEST_MAX
+  end
+
+  def print_counters
+    @counters.each_pair do |pair|
+      puts "Imported #{pairl.last} intances of #{pair.first}."
+    end
   end
 
 end
