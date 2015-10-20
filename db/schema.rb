@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151010210503) do
+ActiveRecord::Schema.define(version: 20151018173218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
     t.float    "longitude"
     t.float    "latitude"
     t.decimal  "stars"
-    t.integer  "review_counts"
+    t.integer  "review_count"
     t.string   "neighborhoods", default: [],              array: true
     t.json     "attribs",       default: {}
     t.boolean  "open"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   end
 
   add_index "businesses", ["business_id"], name: "index_businesses_on_business_id", unique: true, using: :btree
+  add_index "businesses", ["stars"], name: "index_businesses_on_stars", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "business_id"
@@ -76,7 +77,9 @@ ActiveRecord::Schema.define(version: 20151010210503) do
   end
 
   add_index "reviews", ["business_id"], name: "index_reviews_on_business_id", using: :btree
+  add_index "reviews", ["date"], name: "index_reviews_on_date", using: :btree
   add_index "reviews", ["review_id"], name: "index_reviews_on_review_id", unique: true, using: :btree
+  add_index "reviews", ["stars"], name: "index_reviews_on_stars", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
@@ -128,6 +131,8 @@ ActiveRecord::Schema.define(version: 20151010210503) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["average_stars"], name: "index_users_on_average_stars", using: :btree
+  add_index "users", ["fans"], name: "index_users_on_fans", using: :btree
   add_index "users", ["user_id"], name: "index_users_on_user_id", unique: true, using: :btree
 
 end

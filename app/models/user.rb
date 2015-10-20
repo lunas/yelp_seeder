@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  def reviewed? business_id
+    reviews.any? { |review| review.business_id == business_id }
+  end
 end

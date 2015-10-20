@@ -4,6 +4,7 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :business
+  has_many   :friendships, through: :user
 
 
   def self.build_from_json(json_line)

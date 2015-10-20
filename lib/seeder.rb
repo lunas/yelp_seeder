@@ -24,7 +24,7 @@ class Seeder
     seed_reviews
     seed_checkins
     seed_tips
-    print_counters
+      print_counters
   end
 
 
@@ -91,7 +91,7 @@ class Seeder
 
   def print_counters
     @counters.each_pair do |pair|
-      puts "Imported #{pairl.last} intances of #{pair.first}."
+      puts "Imported #{pair.last} instances of #{pair.first}."
     end
   end
 

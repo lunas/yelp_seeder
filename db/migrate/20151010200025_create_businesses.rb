@@ -9,7 +9,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.float  :longitude
       t.float  :latitude
       t.decimal :stars
-      t.integer :review_counts
+      t.integer :review_count
       t.string :neighborhoods, array: true, default: []
       t.json   :attribs, default: {}
       t.boolean :open

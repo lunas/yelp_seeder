@@ -18,7 +18,7 @@ class Business < ActiveRecord::Base
                      longitude: business_obj['longitude'],
                      latitude: business_obj['latitude'],
                      stars: business_obj['stars'],
-                     review_counts: business_obj['review_counts'],
+                     review_count: business_obj['review_count'],
                      neighborhoods: business_obj['neighborhoods'],
                      attribs: business_obj['attributes'],
                      open: business_obj['open'] == 'true',
@@ -46,6 +46,23 @@ class Business < ActiveRecord::Base
     business_obj['categories'].each do |cat_name|
       b.categories.create( name:  cat_name)
     end
+  end
+
+
+  # Find all groups of friends that reviewed this business.
+  def groups_reviewing_me
+    my_reviewers = reviews.includes(user: [friends: :reviews]).map{|r| r.user}
+    groups = my_reviewers.map do |user|
+      user.friends.select do |friend|
+        friend.reviewed? self.id
+      end
+    end
+    groups
+  end
+
+
+  def largest_friendly_group_reviewing_me
+    groups_reviewing_me.max { |a,b| a.size <=> b.size } or []
   end
 
 end
