@@ -53,11 +53,12 @@ class Business < ActiveRecord::Base
   def groups_reviewing_me
     my_reviewers = reviews.includes(user: [friends: :reviews]).map{|r| r.user}
     groups = my_reviewers.map do |user|
-      user.friends.select do |friend|
+      reviewing_friends = user.friends.select do |friend|
         friend.reviewed? self.id
       end
+      reviewing_friends.empty? ? [] : reviewing_friends << user
     end
-    groups
+    groups.to_set
   end
 
 
